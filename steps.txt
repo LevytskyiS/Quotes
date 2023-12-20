@@ -33,4 +33,4 @@
 23. pip install gunicorn
 24. pip freeze > requirements.txt
 25. fly launch
-26. dockerfile
+26. dockerfile + deploy -> ? stucked

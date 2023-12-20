@@ -8,8 +8,9 @@
 <body>
     <div>
         <ul>
-            <li><a href="{% url 'add_author' %}">Add author</a></li>
-            <li><a href="{% url 'add_quote' %}">Add quote</a></li>
+            <li><a href="{% url 'main:index' %}">Home</a></li>
+            <li><a href="{% url 'main:add_author' %}">Add author</a></li>
+            <li><a href="{% url 'main:add_quote' %}">Add quote</a></li>
         </ul>
     </div>
     {% block content %}{% endblock %}

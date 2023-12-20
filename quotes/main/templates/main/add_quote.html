@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <form action="{% url 'add_quote' %}" method="post">
+    <form action="{% url 'main:add_quote' %}" method="post">
         {% csrf_token %}
         {{ form }}
         <button type="submit" class="sub-but">Add</button>
