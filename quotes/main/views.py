@@ -4,9 +4,11 @@ from django.http import JsonResponse
 from typing import Any
 from django.db.models.query import QuerySet
 from django.forms.models import BaseModelForm
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.views.generic import ListView, CreateView, DetailView
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import Author, Quote
 from .forms import AuthorForm, QuoteForm
@@ -36,7 +38,7 @@ class AuthorDetailView(DetailView):
 class QuoteDetailView(DetailView):
     model = Quote
     template_name = "main/quote_detail.html"
-    pk_url_kwarg = "quote_id"
+    # pk_url_kwarg = "quote_id"
 
 
 class CreateAuthor(CreateView):
@@ -53,12 +55,26 @@ class CreateQuote(CreateView):
     success_url = "/"
 
 
-def vote_up(request):
-    data = json.loads(request.body)
-    vote = int(data.get("value"))
-    quote_id = int(data.get("quoteId"))
-    quote = Quote.objects.get(id=quote_id)
-    quote.rating += 1
-    quote.save()
-    print(quote.rating)
-    return JsonResponse("Payment complete", safe=False)
+class VoteUp(APIView):
+    def post(self, request):
+        data = json.loads(request.body)
+        vote = int(data.get("value"))
+        quote_id = int(data.get("quoteId"))
+        # quote = Quote.objects.get(id=quote_id)
+        quote = get_object_or_404(Quote, pk=quote_id)
+        quote.rating += 1
+        quote.save()
+        return Response(json.dumps({"voted": "Voted"}))
+
+
+# function
+# def vote_up(request):
+#     data = json.loads(request.body)
+#     vote = int(data.get("value"))
+#     quote_id = int(data.get("quoteId"))
+#     # quote = Quote.objects.get(id=quote_id)
+#     quote = get_object_or_404(Quote, pk=quote_id)
+#     quote.rating += 1
+#     quote.save()
+#     print(quote.rating)
+#     return JsonResponse("Voted!", safe=False)

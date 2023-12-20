@@ -4,7 +4,7 @@
 
     {% for quote in page_obj %}
 
-        <a href="{% url 'main:quote_detail' quote.id %}">{{ quote.text }}</a>
+        <a href="{{ quote.get_absolute_url }}">{{ quote.text }}</a>
         <a href="{% url 'main:author_detail' quote.author.id %}">{{ quote.author }}</a>
         <p>------------------------------------</p>
 

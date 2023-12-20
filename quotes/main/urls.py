@@ -14,12 +14,12 @@ urlpatterns = [
         name="author_detail",
     ),
     path(
-        "quote/<int:quote_id>/",
+        "quote/<slug:slug>/",
         # "author/<slug:first_name>/",
         views.QuoteDetailView.as_view(),
         name="quote_detail",
     ),
-    path("vote_up/", views.vote_up, name="vote_up"),
+    path("vote_up/", views.VoteUp.as_view(), name="vote_up"),
     path("add_author/", views.CreateAuthor.as_view(), name="add_author"),
     path("add_quote/", views.CreateQuote.as_view(), name="add_quote"),
 ]
