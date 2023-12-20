@@ -24,3 +24,13 @@
 14. python manage.py migrate main
 15. app/templates/app -> base.html
 16. python manage.py createsuperuser
+17. add postgres settings
+18. pip install psycopg2-binary
+19. docker-compose file
+20. python manage.py migrate
+21. APP_NAME=
+22. setting.py -> ALLOWED_HOSTS
+23. pip install gunicorn
+24. pip freeze > requirements.txt
+25. fly launch
+26. dockerfile
