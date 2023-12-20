@@ -1,3 +1,6 @@
+import json
+
+from django.http import JsonResponse
 from typing import Any
 from django.db.models.query import QuerySet
 from django.forms.models import BaseModelForm
@@ -48,3 +51,14 @@ class CreateQuote(CreateView):
     form_class = QuoteForm
     template_name = "main/add_quote.html"
     success_url = "/"
+
+
+def vote_up(request):
+    data = json.loads(request.body)
+    vote = int(data.get("value"))
+    quote_id = int(data.get("quoteId"))
+    quote = Quote.objects.get(id=quote_id)
+    quote.rating += 1
+    quote.save()
+    print(quote.rating)
+    return JsonResponse("Payment complete", safe=False)

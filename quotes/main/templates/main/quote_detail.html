@@ -1,8 +1,9 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-
-    {{ quote }}
+    <div data-quote-id="{{ quote.id }}" class="js-quote-vote">
+        {{ quote }}
+    </div>
 
     <button class="js-vote-up" type="submit" value="submit">Vote</button>
 
