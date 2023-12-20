@@ -42,10 +42,6 @@ class CreateAuthor(CreateView):
     template_name = "main/add_author.html"
     success_url = "/"
 
-    def form_valid(self, form: BaseModelForm) -> HttpResponse:
-        print(form)
-        return super().form_valid(form)
-
 
 class CreateQuote(CreateView):
     model = Quote

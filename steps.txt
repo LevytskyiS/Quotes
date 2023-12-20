@@ -28,9 +28,24 @@
 18. pip install psycopg2-binary
 19. docker-compose file
 20. python manage.py migrate
+FLY
 21. APP_NAME=
 22. setting.py -> ALLOWED_HOSTS
 23. pip install gunicorn
 24. pip freeze > requirements.txt
 25. fly launch
 26. dockerfile + deploy -> ? stucked
+
+DOCKER + DEPLOY TO DIGITAL OCEAN 
+27. Dockerfile 
+FROM python:3.10-slim-buster
+WORKDIR /app
+COPY requirements.txt /app
+RUN pip install -r requirements.txt
+COPY . /app
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000", "--noreload"]
+
+28. docker build . --platform=linux/amd64 -t pycoder7/quotes:0.0.1
+29. docker push pycoder7/quotes:0.0.1
+30. docker pull pycoder7/quotes:0.0.1
+31. docker run --name quotes_app -p 8000:8000 -d pycoder7/quotes:0.0.1

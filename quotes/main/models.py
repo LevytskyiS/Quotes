@@ -14,6 +14,7 @@ class Author(models.Model):
 class Quote(models.Model):
     author = models.ForeignKey(Author, related_name="quotes", on_delete=models.CASCADE)
     text = models.CharField(max_length=300)
+    rating = models.IntegerField(default=0)
 
     def __str__(self):
         return self.text

@@ -33,9 +33,9 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = True
 
 APP_NAME = os.environ.get("FLY_APP_NAME")
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".fly.dev"]  # <-- Updated!
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".fly.dev", "165.232.83.114"]  # <-- Updated!
 
-CSRF_TRUSTED_ORIGINS = ["https://*.fly.dev"]  # <-- Updated!
+# CSRF_TRUSTED_ORIGINS = ["https://*.fly.dev"]  # <-- Updated!
 
 
 # Application definition
