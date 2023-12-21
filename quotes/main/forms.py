@@ -27,9 +27,10 @@ class AuthorForm(ModelForm):
 class QuoteForm(ModelForm):
     class Meta:
         model = Quote
-        fields = ["text", "author"]
+        fields = ["text", "author", "slug"]
         author = ModelChoiceField(queryset=Author.objects.all())
         widgets = {
             "text": TextInput(attrs={"class": "form-control", "placeholder": "Quote"}),
             author: TextInput(attrs={"class": "form-control", "placeholder": "Author"}),
+            "slug": TextInput(attrs={"class": "form-control", "placeholder": "Slug"}),
         }

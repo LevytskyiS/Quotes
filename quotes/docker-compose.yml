@@ -3,7 +3,7 @@ services:
   postgres:
     image: postgres
     environment:
-      POSTGRES_DB: quo_db
+      # POSTGRES_DB: quo_db
       POSTGRES_USER: quo_user
       POSTGRES_PASSWORD: 123456
     ports:
