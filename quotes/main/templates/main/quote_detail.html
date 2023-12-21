@@ -1,4 +1,5 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
 {% block content %}
     <div data-quote-id="{{ quote.id }}" class="js-quote-vote">
@@ -6,5 +7,5 @@
     </div>
 
     <button class="js-vote-up" type="submit" value="submit">Vote</button>
-
+    <script type="text/javascript" src="{% static 'main/js/quote_detail.js' %}"></script>
 {% endblock %}

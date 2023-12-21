@@ -1,14 +1,20 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
 {% block content %}
 
-    {% for quote in page_obj %}
 
-        <a href="{{ quote.get_absolute_url }}">{{ quote.text }}</a>
-        <a href="{% url 'main:author_detail' quote.author.id %}">{{ quote.author }}</a>
-        <p>------------------------------------</p>
+    <ul class="js-quote-list">
+        {% for quote in page_obj %}
+        <li class="js-li-favourite" data-quote-id="{{ quote.id }}">
+            <a href="{{ quote.get_absolute_url }}">{{ quote.text }}</a>
+            <a href="{% url 'main:author_detail' quote.author.id %}">{{ quote.author }}</a>
+            <div class="js-quote-favourite">&#9734</div>
+            <p>------------------------------------</p>
+        </li>
+        {% endfor %}
+    </ul>
 
-    {% endfor %}
 
     <div class="pagination">
         <span class="step-links">
@@ -27,5 +33,5 @@
             {% endif %}
         </span>
     </div>
-
+    <script type="text/javascript" src="{% static 'main/js/index.js' %}"></script>
 {% endblock %}
