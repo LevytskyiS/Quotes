@@ -19,6 +19,7 @@ urlpatterns = [
         views.QuoteDetailView.as_view(),
         name="quote_detail",
     ),
+    path("quote_favourite/", views.QuoteFavourite.as_view(), name="quote_favourite"),
     path("vote_up/", views.VoteUp.as_view(), name="vote_up"),
     path("add_author/", views.CreateAuthor.as_view(), name="add_author"),
     path("add_quote/", views.CreateQuote.as_view(), name="add_quote"),

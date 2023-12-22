@@ -7,8 +7,8 @@
     <ul class="js-quote-list">
         {% for quote in page_obj %}
         <li class="js-li-favourite" data-quote-id="{{ quote.id }}">
-            <a href="{{ quote.get_absolute_url }}">{{ quote.text }}</a>
-            <a href="{% url 'main:author_detail' quote.author.id %}">{{ quote.author }}</a>
+            <a href="{{ quote.get_absolute_url }}" class="js-quote-a">{{ quote.text }}</a>
+            <a href="{% url 'main:author_detail' quote.author.id %}" class="js-quote-a">{{ quote.author }}</a>
             <div class="js-quote-favourite">&#9734</div>
             <p>------------------------------------</p>
         </li>

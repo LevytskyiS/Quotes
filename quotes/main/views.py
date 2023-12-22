@@ -15,6 +15,11 @@ from .models import Author, Quote
 from .forms import AuthorForm, QuoteForm
 
 
+class QuoteFavourite(ListView):
+    model = Quote
+    template_name = "main/quote_favourite.html"
+
+
 class QuoteListView(ListView):
     model = Quote
     paginate_by = 3
